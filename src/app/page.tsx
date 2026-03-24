@@ -60,7 +60,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/calculators"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/14"
+                className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/18 px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.16)] transition hover:bg-white/24"
               >
                 Open calculators
               </Link>
