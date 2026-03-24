@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { Activity, BookOpen, Calculator, ClipboardList, Home, MessageCircle, X } from 'lucide-react';
+import { Activity, BookOpen, Calculator, ClipboardList, Home, MessageCircle, Sparkles, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const items = [
@@ -10,6 +10,7 @@ const items = [
   { href: '/assessment', label: 'Pathway', icon: ClipboardList },
   { href: '/calculators', label: 'Calculators', icon: Calculator },
   { href: '/reference', label: 'Reference', icon: BookOpen },
+  { href: '/whats-new', label: "What's New", icon: Sparkles },
   { href: '/chat', label: 'Ask NotebookLM', icon: MessageCircle },
 ];
 

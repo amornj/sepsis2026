@@ -9,6 +9,7 @@ const links = [
   { href: '/assessment', label: 'Pathway' },
   { href: '/calculators', label: 'Calculators' },
   { href: '/reference', label: 'Reference' },
+  { href: '/whats-new', label: "What's New" },
   { href: '/chat', label: 'Ask NotebookLM' },
 ];
 

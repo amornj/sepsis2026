@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Calculator, MessageCircle, ShieldAlert, Stethoscope } from 'lucide-react';
+import { ArrowRight, BookOpen, Calculator, MessageCircle, ShieldAlert, Sparkles, Stethoscope } from 'lucide-react';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
@@ -31,6 +31,12 @@ const quickLinks = [
     icon: BookOpen,
     description: 'Condensed recommendations for screening, fluids, MAP, vasopressors, antibiotics, and source control.',
   },
+  {
+    href: '/whats-new',
+    title: "What's New in SSC 2026",
+    icon: Sparkles,
+    description: 'Key changes from the 2026 guideline: screening, fluids, vasopressors, lactate, antibiotics, and practical shifts.',
+  },
 ];
 
 export default function HomePage() {
@@ -53,7 +59,8 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-stone-900 transition hover:bg-stone-100"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold transition hover:bg-stone-100"
+                style={{ color: '#1c1917' }}
               >
                 Open pathway
                 <ArrowRight className="h-4 w-4" />
@@ -88,7 +95,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         {quickLinks.map((item) => {
           const Icon = item.icon;
           return (

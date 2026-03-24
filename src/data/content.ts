@@ -161,6 +161,80 @@ export const referenceSections = [
   },
 ];
 
+export const whatsNewSections = [
+  {
+    category: 'Screening & Recognition',
+    badge: 'Clarified',
+    summary:
+      'qSOFA is now explicitly a bedside risk signal, not a standalone screening tool for hospital patients.',
+    points: [
+      'Use NEWS2, NEWS, MEWS, or SIRS — not qSOFA alone — as the primary inpatient screening tool.',
+      'A positive qSOFA should increase urgency and accelerate review, but a negative result does not exclude sepsis.',
+      'Capillary refill time is more prominently featured as a bedside perfusion marker alongside lactate.',
+    ],
+  },
+  {
+    category: 'Fluids',
+    badge: 'Refined',
+    summary:
+      'The 30 mL/kg initial crystalloid target remains, but reassessment and fluid tolerance are more explicitly foregrounded.',
+    points: [
+      'At least 30 mL/kg IV crystalloid in the first 3 hours for sepsis-induced hypoperfusion or septic shock.',
+      'Balanced crystalloids (e.g., Lactated Ringer\'s, Plasma-Lyte) preferred over normal saline when available.',
+      'Frequent reassessment for response and fluid tolerance is required — not blind completion of the bolus.',
+      'Albumin is conditional and selective, not routine; consider after large crystalloid volumes or in cirrhosis.',
+    ],
+  },
+  {
+    category: 'Vasopressors & MAP Targets',
+    badge: 'Updated',
+    summary:
+      'Norepinephrine remains first-line. MAP target nuanced for older adults. Peripheral initiation explicitly supported.',
+    points: [
+      'Norepinephrine is the preferred first-line vasopressor for most patients.',
+      'Initial MAP target around 65 mmHg; a range of 60–65 mmHg is reasonable for patients aged 65 or older.',
+      'Start vasopressors peripherally to avoid delaying resuscitation when central access is not immediately available.',
+      'Add vasopressin when norepinephrine requirements are escalating; add epinephrine for refractory shock.',
+    ],
+  },
+  {
+    category: 'Lactate & Perfusion',
+    badge: 'Elevated',
+    summary:
+      'Intermediate lactate elevation and capillary refill time are given more clinical weight in guiding resuscitation.',
+    points: [
+      'Lactate above 2 mmol/L can represent clinically meaningful hypoperfusion even below traditional shock thresholds.',
+      'Measure lactate when septic shock is suspected; use trends, not single values.',
+      'Capillary refill time is now co-equal with other perfusion markers for guiding resuscitation.',
+      'Target perfusion endpoints (lactate, CRT, urine output, mental status) — not checklist completion alone.',
+    ],
+  },
+  {
+    category: 'Antibiotics & Source Control',
+    badge: 'Tiered timing',
+    summary:
+      'A tiered antibiotic timing approach with explicit windows based on certainty and acuity replaces a single 1-hour target.',
+    points: [
+      'Septic shock or probable/definite sepsis: give antibiotics immediately, ideally within 1 hour.',
+      'Possible sepsis without shock: perform a rapid time-limited assessment; give antibiotics within 3 hours if concern persists.',
+      'Do not allow culture collection to meaningfully delay antibiotic administration.',
+      'Source control (drainage, debridement, device removal) should occur as early as practical, ideally within 6 hours when indicated.',
+    ],
+  },
+  {
+    category: 'Practical Bedside Shifts',
+    badge: 'Key changes',
+    summary:
+      'Across all domains, serial reassessment is elevated as a core clinical activity — not an afterthought.',
+    points: [
+      'ICU admission should not be delayed unnecessarily — aim within 6 hours when ICU-level care is indicated.',
+      'Vasopressin should be added earlier when norepinephrine is escalating, not reserved as a last resort.',
+      'Serial reassessment of mental status, CRT, urine output, lactate trend, and MAP is now explicitly required.',
+      'The 1-hour bundle concept is refined: treat shock as an emergency, but apply judgment based on certainty and acuity.',
+    ],
+  },
+];
+
 export const calculatorCards = [
   {
     title: 'qSOFA',
