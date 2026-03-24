@@ -61,7 +61,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = await fetch(`${NLM_PROXY_URL}/query`, {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 45000);
+
+    const proxyBase = NLM_PROXY_URL.replace(/\/$/, '');
+    const response = await fetch(`${proxyBase}/query`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +75,11 @@ export async function POST(request: NextRequest) {
         question: `${MODE_PREFIXES[mode as string] ?? ''}${question}`,
         notebook_id: NOTEBOOK_ID,
       }),
+      signal: controller.signal,
+      cache: 'no-store',
     });
+
+    clearTimeout(timeout);
 
     if (!response.ok) {
       const text = await response.text();
@@ -88,7 +96,11 @@ export async function POST(request: NextRequest) {
       sources: Array.isArray(data.sources) ? data.sources : [],
     });
   } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
     console.error('Chat API error:', error);
-    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
+    return NextResponse.json(
+      { error: `Internal server error: ${message}` },
+      { status: 500 },
+    );
   }
 }
