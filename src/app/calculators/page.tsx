@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { calculatorCards } from '@/data/content';
 import {
+  calculateNews2,
   calculateQsofa,
   calculateShockIndex,
   calculateSofaLite,
@@ -22,6 +23,25 @@ export default function CalculatorsPage() {
   const [bilirubin, setBilirubin] = useState(2.4);
   const [creatinine, setCreatinine] = useState(2.1);
   const [lactate, setLactate] = useState(3.2);
+
+  // NEWS2 state
+  const [newsRr, setNewsRr] = useState(22);
+  const [newsSpo2, setNewsSpo2] = useState(94);
+  const [newsO2, setNewsO2] = useState(false);
+  const [newsTemp, setNewsTemp] = useState(38.2);
+  const [newsSbp, setNewsSbp] = useState(105);
+  const [newsHr, setNewsHr] = useState(108);
+  const [newsCvpu, setNewsCvpu] = useState(false);
+
+  const news2 = calculateNews2({
+    respiratoryRate: newsRr,
+    spo2: newsSpo2,
+    supplementalO2: newsO2,
+    temperature: newsTemp,
+    systolicBp: newsSbp,
+    heartRate: newsHr,
+    cvpu: newsCvpu,
+  });
 
   const qsofa = calculateQsofa({ alteredMentation: ams, respiratoryRate: rr, systolicBp: sbp });
   const sofaLite = calculateSofaLite({ map, platelets, bilirubin, creatinine, alteredMentation: ams });
@@ -46,6 +66,49 @@ export default function CalculatorsPage() {
             <p className="text-sm leading-6 text-stone-600">{card.description}</p>
           </Card>
         ))}
+      </section>
+
+      <section>
+        <Card className="space-y-4">
+          <div>
+            <h2 className="text-xl font-semibold text-stone-900">NEWS2</h2>
+            <p className="text-sm leading-6 text-stone-600">
+              National Early Warning Score 2. Flags physiological deterioration and guides escalation
+              urgency. Not diagnostic — use alongside full clinical assessment.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <NumberField label="Respiratory rate" value={newsRr} onChange={setNewsRr} />
+            <NumberField label="SpO₂ %" value={newsSpo2} onChange={setNewsSpo2} />
+            <NumberField label="Temperature °C" value={newsTemp} onChange={setNewsTemp} step="0.1" />
+            <NumberField label="Systolic BP" value={newsSbp} onChange={setNewsSbp} />
+            <NumberField label="Heart rate" value={newsHr} onChange={setNewsHr} />
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+            <label className="flex flex-1 items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700">
+              <input
+                type="checkbox"
+                checked={newsO2}
+                onChange={(e) => setNewsO2(e.target.checked)}
+                className="h-4 w-4 accent-[var(--color-accent)]"
+              />
+              On supplemental oxygen
+            </label>
+            <label className="flex flex-1 items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700">
+              <input
+                type="checkbox"
+                checked={newsCvpu}
+                onChange={(e) => setNewsCvpu(e.target.checked)}
+                className="h-4 w-4 accent-[var(--color-accent)]"
+              />
+              New confusion / not fully alert
+            </label>
+          </div>
+          <ResultCard
+            label={`NEWS2 ${news2.total} — ${news2.band} risk`}
+            summary={news2.interpretation}
+          />
+        </Card>
       </section>
 
       <section className="grid gap-4 xl:grid-cols-2">
